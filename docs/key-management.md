@@ -1,0 +1,11 @@
+# Key management
+
+Run `research-integrity keygen --private-key keys/private.pem --public-key keys/public.pem` in a private interactive terminal on a trusted host. Choose a strong, unique passphrase and retain it separately. The generator creates an encrypted PKCS#8 PEM using PyCA's best available encryption, and an Ed25519 SubjectPublicKeyInfo public PEM. The CLI prints the SHA-256 fingerprint of the raw 32-byte public key. It refuses existing destinations.
+
+Deliver the public key over an authenticated channel or read-only medium. Compare the printed fingerprint with a copy received through a separate trusted channel. A public key copied from the same writable directory as an untrusted manifest provides no independent identity assurance. Keep the trusted public key available to verifying hosts. Restrict write access to its directory.
+
+Keep the private key offline between signing sessions and retain a separately protected backup. On POSIX, create the key directory with mode 0700. The writer creates private files with owner-only permissions. On Windows use a private NTFS directory and inspect its inherited permissions with `icacls keys`. Restrict access to the signing account and authorized administrators. File creation uses the directory's Windows ACL. A passphrase protects a key at rest. Malware on an unlocked signing host could read its decrypted value or intercept the passphrase.
+
+To migrate a verifier, authenticate the public key again and run `research-integrity inspect control/base.json --public-key keys/public.pem` before verifying the copied dataset. If the private key or passphrase is lost, the existing public key can still verify old manifests. Generate a new pair for future baselines. Authenticate the replacement out of band, retain the old public key for historical checks, and record the transition. Following suspected compromise, stop accepting new statements under the old key and independently establish which data and baselines are trustworthy. Revocation and key-history distribution are operator responsibilities.
+
+The test vector publishes only a disposable public key and signature. Never commit a private key or a real research inventory. [PyCA key serialization](https://cryptography.io/en/latest/hazmat/primitives/asymmetric/serialization/)

@@ -1,0 +1,22 @@
+{
+  "envelope": {
+    "payload": {
+      "schema_version": 1,
+      "algorithm": "sha256",
+      "created_at": "2026-01-01T00:00:00Z",
+      "files": [
+        {
+          "path": "sample.txt",
+          "size": 10,
+          "sha256": "18c4f85a180cf29ddc1f8e3a3143ff54d643d1c306dbe610f4f70482632071d4"
+        }
+      ]
+    },
+    "signature": {
+      "algorithm": "ed25519",
+      "public_key_fingerprint": "sha256:a9d50a93ca8ce23b8adb7c226c3368be2331203aa926417a57a6ac80a604db11",
+      "value": "5zSsmVDDduC4rug9A7c62Uz8Kw/wX9yrzGNovDH9wRVtEYbE4FnssFLacO7tWj0dv1gq2sunaFvD8eMZdRJaCw=="
+    }
+  },
+  "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAqcW+4AkSD8ZNfASA6EeTcMhEZX5m2gF5f24PYPsyayo=\n-----END PUBLIC KEY-----\n"
+}
