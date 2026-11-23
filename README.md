@@ -6,7 +6,9 @@ A signed manifest binds the inventory to an Ed25519 key. Keep a trusted copy of 
 
 ## Install from this checkout
 
-Python 3.11 or later is required. Local testing covered Windows and Linux. macOS is included in the proposed CI matrix. In PowerShell, run:
+Python 3.11 or later is required. GitHub Actions runs the tests on Linux, Windows, and macOS. [Hosted checks](https://github.com/IILEGENDII/research-data-integrity/actions/workflows/ci.yml)
+
+In PowerShell, run:
 
 ```powershell
 py -m venv .venv
